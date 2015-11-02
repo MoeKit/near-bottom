@@ -23,4 +23,7 @@ nearBottom.whenNear({
 		finish(); // 当没有数据时，调用finish()来设定完成，后面将不会再执行action,逻辑上finish只执行一次。
 	}
 });
+
+// 解除绑定
+nearBottom.cancelNear();
 ```

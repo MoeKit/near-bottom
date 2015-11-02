@@ -18,15 +18,25 @@ var finish = function() {
 	}
 };
 
+var pad = 300;
+var callback = function(){};
+
+var eventContent = function(){
+	
+	if (!isLock && isNear(pad) && !isFinish) {
+		isLock = true;
+		callback(done, finish);
+	} else {
+		// nothing
+	}
+};
+
 exports.whenNear = function(option) {
-	var pad = option.pad || 300;
-	var callback = option.action;
-	window.addEventListener("scroll", function() {
-		if (!isLock && isNear(pad) && !isFinish) {
-			isLock = true;
-			callback(done, finish);
-		} else {
-			// nothing
-		}
-	});
+	pad = option.pad || 300;
+	callback = option.action || function(){};
+	window.addEventListener("scroll", eventContent);
+};
+
+exports.cancelNear = function(){
+	window.removeEventListener("scroll", eventContent);
 };

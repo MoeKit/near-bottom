@@ -44,3 +44,13 @@ nearBottom.whenNear({
 	}
 });
 ````
+
+<button type="button" id="JS_stop">解绑加载</button>
+
+````javascript
+var nearBottom = require('near-bottom');
+$("#JS_stop").on("click", function(){
+	nearBottom.cancelNear();
+	alert("解绑成功");
+});
+````
